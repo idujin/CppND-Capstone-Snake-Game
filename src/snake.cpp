@@ -2,6 +2,81 @@
 #include <cmath>
 #include <iostream>
 
+Snake::Snake(const Snake &source){ // copy constructor
+  grid_width = source.grid_width;
+  grid_height = source.grid_height;
+  head_x = source.head_x;
+  head_y = source.head_y;
+  direction = source.direction;
+  speed = source.speed;
+  size = source.size;
+  alive = source.alive;
+  growing = source.growing;
+  body = source.body;
+
+} 
+Snake&  Snake::operator=(const Snake &source) { // copy assignment operator
+  if(this == &source) 
+    return *this;
+  body.clear();
+
+  grid_width = source.grid_width;
+  grid_height = source.grid_height;
+  head_x = source.head_x;
+  head_y = source.head_y;
+  direction = source.direction;
+  speed = source.speed;
+  size = source.size;
+  alive = source.alive;
+  growing = source.growing;
+
+  body = source.body;
+
+  return *this;
+}
+Snake::Snake(Snake &&source) { // move constructor
+  grid_width = source.grid_width;
+  grid_height = source.grid_height;
+  head_x = source.head_x;
+  head_y = source.head_y;
+  direction = source.direction;
+  speed = source.speed;
+  size = source.size;
+  alive = source.alive;
+  growing = source.growing;
+  body = std::move(source.body);
+
+  source.body.clear();
+  source.speed = 0.1f;
+  source.size = 1;
+  source.alive = true;
+  source.growing = false;
+}
+Snake& Snake::operator=(Snake &&source) { // move assignment operator
+  if(this == &source) 
+      return *this;
+  body.clear();
+
+  grid_width = source.grid_width;
+  grid_height = source.grid_height;
+  head_x = source.head_x;
+  head_y = source.head_y;
+  direction = source.direction;
+  speed = source.speed;
+  size = source.size;
+  alive = source.alive;
+
+  growing = source.growing;
+  body = std::move(source.body);
+
+  source.body.clear();
+  source.speed = 0.1f;
+  source.size = 1;
+  source.alive = true;
+  source.growing = false;
+  return *this;
+} 
+
 void Snake::Update() {
   SDL_Point prev_cell{
       static_cast<int>(head_x),
