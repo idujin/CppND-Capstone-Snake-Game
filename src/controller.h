@@ -9,7 +9,7 @@ class Controller {
 
  private:
   void ChangeDirection(Snake &snake, Snake::Direction input,
-                       Snake::Direction opposite) const;
+                       const Snake::Direction &opposite) const;
 };
 
 #endif
