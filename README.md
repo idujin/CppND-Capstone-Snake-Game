@@ -4,9 +4,19 @@ This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree P
 
 <img src="snake_game.gif"/>
 
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
-
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+The Capstone Project has done by extending with the additional feature which the food of snake in the game moves in every 10 seconds. The specific modifications are below.
+* The Snake class followed the Rule of 5 (the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor).
+  * src/snake.cpp, src/snake.h
+* Pass by reference was used for saving memory.
+  * src/controller.cpp, src/controller.h, src/renderer.cpp, src/renderer.h
+* Destructor of Renderer has been properly modified.
+  * src/renderer.cpp
+* Smart pointers were used instead of raw pointers.
+  * src/game.cpp, src/game.h
+* The game moves food using multithreading.
+  * CMakeList.txt, src/game.cpp, src/game.h
+* A mutex and lock was used to protect data.
+  * src/game.cpp, src/game.h
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
