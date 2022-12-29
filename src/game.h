@@ -16,7 +16,7 @@ class Game {
   int GetSize() const;
 
  private:
-  Snake snake;
+  std::unique_ptr<Snake> snake;
   SDL_Point food;
 
   std::random_device dev;
